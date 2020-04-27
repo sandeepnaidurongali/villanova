@@ -11,17 +11,14 @@ public class Courses {
     private String name;
     @Column(name="courseCredits",nullable = false)
     private int credits;
-    @OneToOne(mappedBy = "courseId")
+    @OneToOne
+    @JoinColumn(name="courseId")
     private Enrollments enrollments;
-    @OneToOne(mappedBy = "courseId")
+    @OneToOne
+    @JoinColumn(name="courseId")
     private DisEnrollments disEnrollments;
 
-    public Courses(int courseId, String name, int credits, Enrollments enrollments, DisEnrollments disEnrollments) {
-        this.courseId = courseId;
-        this.name = name;
-        this.credits = credits;
-        this.enrollments = enrollments;
-        this.disEnrollments = disEnrollments;
+    public Courses() {
     }
 
     public int getCourseId() {

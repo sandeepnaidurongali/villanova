@@ -1,19 +1,24 @@
 package com.example.villanova.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="Enrollments")
 public class Enrollments {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int enrollmentId;
     private int studentId;
     private int courseId;
+    @Enumerated(EnumType.ORDINAL)
     private Grade grade;
 
-    public Enrollments(int studentId, int courseId, Grade grade) {
-        this.studentId = studentId;
-        this.courseId = courseId;
-        this.grade = grade;
+    public int getEnrollmentId() {
+        return enrollmentId;
+    }
+
+    public void setEnrollmentId(int enrollmentId) {
+        this.enrollmentId = enrollmentId;
     }
 
     public int getStudentId() {

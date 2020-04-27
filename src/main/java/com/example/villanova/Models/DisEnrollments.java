@@ -1,23 +1,33 @@
 package com.example.villanova.Models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 @Entity
 @Table(name="DisEnrollments")
 public class DisEnrollments {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int disenrollmentId;
     private int studentId;
     private int courseId;
     @Column(name="DateTime",nullable = false)
     private Date dateTime;
     private String comment;
 
-    public DisEnrollments(int studentId, int courseId, Date dateTime, String comment) {
+    public DisEnrollments(int disenrollmentId, int studentId, int courseId, Date dateTime, String comment) {
+        this.disenrollmentId = disenrollmentId;
         this.studentId = studentId;
         this.courseId = courseId;
         this.dateTime = dateTime;
         this.comment = comment;
+    }
+
+    public int getDisenrollmentId() {
+        return disenrollmentId;
+    }
+
+    public void setDisenrollmentId(int disenrollmentId) {
+        this.disenrollmentId = disenrollmentId;
     }
 
     public int getStudentId() {
